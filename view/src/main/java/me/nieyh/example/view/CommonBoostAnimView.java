@@ -166,6 +166,24 @@ public class CommonBoostAnimView extends View {
         }
     }
 
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int width = MeasureSpec.getSize(widthMeasureSpec);
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int height = MeasureSpec.getSize(heightMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+
+        int size = (int) (RING_RADIUS * 2 + RING_WIDTH);
+        if (widthMode == MeasureSpec.AT_MOST && heightMode == MeasureSpec.AT_MOST) {
+            setMeasuredDimension(size, size);
+        } else if (widthMode == MeasureSpec.AT_MOST) {
+            setMeasuredDimension(size, height);
+        } else if (heightMode == MeasureSpec.AT_MOST) {
+            setMeasuredDimension(width, size);
+        }
+    }
+
     /**
      * 初始化环
      *

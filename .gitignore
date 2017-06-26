@@ -39,6 +39,8 @@ captures/
 .idea/gradle.xml
 .idea/dictionaries
 .idea/libraries
+.gradle
+/local.properties
 
 # Keystore files
 *.jks
@@ -54,12 +56,11 @@ freeline.py
 freeline/
 freeline_project_description.json
 =======
-*.iml
-.gradle
-/local.properties
-/.idea/workspace.xml
-/.idea/libraries
 .DS_Store
 /build
 /captures
-.externalNativeBuild
+将删除 .idea/vcs.xml
+将删除 app/libs/
+将删除 app/src/main/res/drawable/
+将删除 view/libs/
+将删除 view/src/main/res/drawable/
