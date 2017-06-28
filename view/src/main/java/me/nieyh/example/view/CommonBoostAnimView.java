@@ -273,9 +273,9 @@ public class CommonBoostAnimView extends View {
         mOtherTUpBorder = padding;
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inPreferredConfig = Bitmap.Config.ARGB_8888;
-        mRocketBitmap = decodeResource(getResources(), R.drawable.rocket, options);
-        mMarkBitmap = decodeResource(getResources(), R.drawable.mark, options);
-        mStarRainBitmap = decodeResource(getResources(), R.drawable.star_rain, options);
+        mRocketBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.rocket, options);
+        mMarkBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.mark, options);
+        mStarRainBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.star_rain, options);
         mRocketImgWidth = mRocketBitmap.getWidth();
         mRocketImgHeight = mRocketBitmap.getHeight();
         mMarkImgWidth = mMarkBitmap.getWidth();
@@ -483,6 +483,22 @@ public class CommonBoostAnimView extends View {
                     if (mUiFrameHandler != null) {
                         mUiFrameHandler.stopRefresh();
                     }
+                    if (mMarkBitmap != null) {
+                        mMarkBitmap.recycle();
+                        mMarkBitmap = null;
+                    }
+                    if (mMaskBitmap != null) {
+                        mMaskBitmap.recycle();
+                        mMaskBitmap = null;
+                    }
+                    if (mStarRainBitmap != null) {
+                        mStarRainBitmap.recycle();
+                        mStarRainBitmap = null;
+                    }
+                    if (mRocketBitmap != null) {
+                        mRocketBitmap.recycle();
+                        mRocketBitmap = null;
+                    }
                     if (mOnAnimatorAction != null) {
                         mOnAnimatorAction.onEnd();
                     }
@@ -560,22 +576,22 @@ public class CommonBoostAnimView extends View {
         float y = mCircleY - CIRCLE_RADIUS;
         int layerId = canvas.saveLayer(x, y, mCircleX + CIRCLE_RADIUS, mCircleY + CIRCLE_RADIUS, null, Canvas.ALL_SAVE_FLAG);
         //火箭
-        if (mRocketBitmap != null) {
+        if (mRocketBitmap != null && !mRocketBitmap.isRecycled()) {
             canvas.drawBitmap(mRocketBitmap, mRocketX, mRocketY, mOtherTPaint);
         }
         //雨
-        if (mStarRainBitmap != null) {
+        if (mStarRainBitmap != null && !mStarRainBitmap.isRecycled()) {
             canvas.drawBitmap(mStarRainBitmap, mStarRainX, mStarRainY, mOtherTPaint);
         }
         //火焰 小
         canvas.drawCircle(mFireSmallCenterX, mFireSmallCenterY, mFireSmallRadius, mFirePaint);
         //火焰 大
         canvas.drawCircle(mFireBigCenterX, mFireBigCenterY, mFireBigRadius, mFirePaint);
-        if (mMarkBitmap != null) {
+        if (mMarkBitmap != null && !mMarkBitmap.isRecycled()) {
             //对勾
             canvas.drawBitmap(mMarkBitmap, mMarkX, mMarkY, mMarkPaint);
         }
-        if (mMaskBitmap != null) {
+        if (mMaskBitmap != null && !mMaskBitmap.isRecycled()) {
             canvas.drawBitmap(mMaskBitmap, x, y, mMaskPaint);
         }
         //将这个层合并到整个视图中
@@ -595,16 +611,6 @@ public class CommonBoostAnimView extends View {
         mOnAnimatorAction = null;
         isStart = false;
         isAutoStart = false;
-    }
-
-    /**
-     * 获取不会被缩放的图片
-     * */
-    private Bitmap decodeResource(Resources resources, int id, BitmapFactory.Options opts) {
-        TypedValue value = new TypedValue();
-        resources.openRawResource(id, value);
-        opts.inTargetDensity = value.density;
-        return BitmapFactory.decodeResource(resources, id, opts);
     }
 
     /***
