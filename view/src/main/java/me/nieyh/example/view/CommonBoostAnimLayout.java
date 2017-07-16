@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.logging.Logger;
 
@@ -163,7 +164,7 @@ public class CommonBoostAnimLayout extends FrameLayout {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 //        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        //fuck super 忘了注释这个 让我找了半天问题
+        Log.w("nieyh", "CommonBoostAnimLayout >> onMeasure()");
         //必须注释掉原先的父类中默认的measure配置
         int width = MeasureSpec.getSize(widthMeasureSpec);
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
@@ -193,6 +194,7 @@ public class CommonBoostAnimLayout extends FrameLayout {
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
+        Log.w("nieyh", "CommonBoostAnimLayout >> onLayout()");
         //此处的left top right bottom值指的是相对于父布局的位置信息
         //同样调用子布局的layout 也是传入相对于当前布局的值
         //布局到指定位置
@@ -401,7 +403,6 @@ public class CommonBoostAnimLayout extends FrameLayout {
                     mFireSmallCircle.setLayerType(View.LAYER_TYPE_NONE, null);
                     mCircleMask.setLayerType(View.LAYER_TYPE_NONE, null);
                     mMark.setLayerType(View.LAYER_TYPE_NONE, null);
-                    mGradualRing.setLayerType(View.LAYER_TYPE_NONE, null);
                 }
 
                 @Override
@@ -414,7 +415,6 @@ public class CommonBoostAnimLayout extends FrameLayout {
                     mFireSmallCircle.setLayerType(View.LAYER_TYPE_HARDWARE, null);
                     mCircleMask.setLayerType(View.LAYER_TYPE_HARDWARE, null);
                     mMark.setLayerType(View.LAYER_TYPE_HARDWARE, null);
-                    mGradualRing.setLayerType(View.LAYER_TYPE_HARDWARE, null);
                 }
             });
 
@@ -454,10 +454,10 @@ public class CommonBoostAnimLayout extends FrameLayout {
     private void refresh() {
         //颜色开始位置与结束位置
         mSquareImg.setBackgroundColor(mRingAndCircleColor);
-        mGradualRing.setRotateColor((int) mRingRotationAngle, START_COLOR, END_COLOR);
-        mGradualRing.setScaleX(mRingScale);
-        mGradualRing.setScaleY(mRingScale);
-        mGradualRing.setAlpha(mRingAlpha);
+//        mGradualRing.setRotateColor((int) mRingRotationAngle, START_COLOR, END_COLOR);
+//        mGradualRing.setScaleX(mRingScale);
+//        mGradualRing.setScaleY(mRingScale);
+//        mGradualRing.setAlpha(mRingAlpha);
         mMark.setAlpha(mMarkAlpha);
         mRocket.setTranslationY(mRocketTranslateY);
         mRocket.setTranslationX(mRocketTranslateX);
@@ -516,6 +516,7 @@ public class CommonBoostAnimLayout extends FrameLayout {
         @Override
         protected void onDraw(Canvas canvas) {
             super.onDraw(canvas);
+            Log.w("nieyh", "GradualRing >> onDraw");
             //绘制环
             canvas.drawArc(mRingRectF, RING_START_ANGLE_1 + mRingRotationAngle, RING_SWEEP_ANGLE, false, mRingPaint1);
             canvas.drawArc(mRingRectF, RING_START_ANGLE_2 + mRingRotationAngle, RING_SWEEP_ANGLE, false, mRingPaint2);
@@ -583,6 +584,7 @@ public class CommonBoostAnimLayout extends FrameLayout {
         @Override
         protected void onDraw(Canvas canvas) {
             super.onDraw(canvas);
+            Log.w("nieyh", "FireCircle >> onDraw");
             //画一个圆
             canvas.drawCircle(mWidth / 2, mHeight / 2, mWidth / 2, mCirclePaint);
         }
@@ -624,6 +626,8 @@ public class CommonBoostAnimLayout extends FrameLayout {
         @Override
         protected void onDraw(Canvas canvas) {
             super.onDraw(canvas);
+
+            Log.w("nieyh", "CircleMask >> onDraw");
             //必须使用saveLayer 不然会有黑色背景会被合并到图层中
             int layerId = canvas.saveLayer(0, 0, getWidth(), getHeight(), null, Canvas.ALL_SAVE_FLAG);
             //生成一个空心圆周围白色的矩形遮罩
