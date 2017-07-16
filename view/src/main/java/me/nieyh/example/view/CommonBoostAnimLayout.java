@@ -454,10 +454,10 @@ public class CommonBoostAnimLayout extends FrameLayout {
     private void refresh() {
         //颜色开始位置与结束位置
         mSquareImg.setBackgroundColor(mRingAndCircleColor);
-//        mGradualRing.setRotateColor((int) mRingRotationAngle, START_COLOR, END_COLOR);
-//        mGradualRing.setScaleX(mRingScale);
-//        mGradualRing.setScaleY(mRingScale);
-//        mGradualRing.setAlpha(mRingAlpha);
+        mGradualRing.setRotateColor((int) mRingRotationAngle, START_COLOR, END_COLOR);
+        mGradualRing.setScaleX(mRingScale);
+        mGradualRing.setScaleY(mRingScale);
+        mGradualRing.setAlpha(mRingAlpha);
         mMark.setAlpha(mMarkAlpha);
         mRocket.setTranslationY(mRocketTranslateY);
         mRocket.setTranslationX(mRocketTranslateX);
