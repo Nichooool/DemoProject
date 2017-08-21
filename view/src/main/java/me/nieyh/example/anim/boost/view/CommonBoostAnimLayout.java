@@ -1,4 +1,4 @@
-package me.nieyh.example.view;
+package me.nieyh.example.anim.boost.view;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -21,9 +21,10 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import java.util.logging.Logger;
+import me.nieyh.example.anim.DrawUtils;
+import me.nieyh.example.anim.FrameUiHandler;
+import me.nieyh.example.anim.view.R;
 
 import static android.graphics.Paint.ANTI_ALIAS_FLAG;
 
@@ -163,9 +164,6 @@ public class CommonBoostAnimLayout extends FrameLayout {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-//        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        Log.w("nieyh", "CommonBoostAnimLayout >> onMeasure()");
-        //必须注释掉原先的父类中默认的measure配置
         int width = MeasureSpec.getSize(widthMeasureSpec);
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int height = MeasureSpec.getSize(heightMeasureSpec);
@@ -194,10 +192,6 @@ public class CommonBoostAnimLayout extends FrameLayout {
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
-        Log.w("nieyh", "CommonBoostAnimLayout >> onLayout()");
-        //此处的left top right bottom值指的是相对于父布局的位置信息
-        //同样调用子布局的layout 也是传入相对于当前布局的值
-        //布局到指定位置
         mSquareImg.layout(0, 0, right - left, bottom - top);
         int rocketLeft = (getMeasuredWidth() - mRocket.getMeasuredWidth()) / 2;
         int rocketRight = rocketLeft + mRocket.getMeasuredWidth();

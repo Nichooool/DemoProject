@@ -1,11 +1,10 @@
-package me.nieyh.example.view;
+package me.nieyh.example.anim.boost.view;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -18,9 +17,12 @@ import android.graphics.RectF;
 import android.graphics.SweepGradient;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
+
+import me.nieyh.example.anim.DrawUtils;
+import me.nieyh.example.anim.FrameUiHandler;
+import me.nieyh.example.anim.view.R;
 
 import static android.graphics.Color.WHITE;
 import static android.graphics.Paint.ANTI_ALIAS_FLAG;

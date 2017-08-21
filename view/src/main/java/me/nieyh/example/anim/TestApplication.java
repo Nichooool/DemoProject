@@ -1,4 +1,4 @@
-package me.nieyh.example.view;
+package me.nieyh.example.anim;
 
 import android.app.Application;
 import android.content.Context;

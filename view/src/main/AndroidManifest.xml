@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 
-    package="me.nieyh.example.view">
+    package="me.nieyh.example.anim.view">
 
     <application
         android:allowBackup="true"

@@ -1,4 +1,4 @@
-package me.nieyh.example.view;
+package me.nieyh.example.anim.view;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("me.nieyh.example.view.test", appContext.getPackageName());
+        assertEquals("me.nieyh.example.anim.view.test", appContext.getPackageName());
     }
 }
