@@ -431,6 +431,8 @@ public class CommonBoostAnimView extends View {
                         //上移80dp
                         float rate = (float) (value - 4100) / 150;
                         mRocketY = (mRocketStartY - Y70DP + Y3DP) - rate * Y80DP;
+                    } else if (value >= 4250) {
+                        mRocketY = mRocketStartY - Y70DP + Y3DP - Y80DP;
                     }
 
                     /**
@@ -446,6 +448,8 @@ public class CommonBoostAnimView extends View {
                     } else if (value >= 4000 && value < 4250) {
                         float rate = (float) (value - 4000) / 250;
                         mStarRainY = mStarRainStartY + rate * (mStarRainImgHeight + CIRCLE_RADIUS * 2);
+                    } else if (value >= 4250) {
+                        mStarRainY = mStarRainStartY + mStarRainImgHeight + CIRCLE_RADIUS * 2;
                     }
 
                     /**
@@ -456,6 +460,8 @@ public class CommonBoostAnimView extends View {
                     if (value >= 4250 && value < 4500) {
                         float rate = (float) (value - 4250) / 250;
                         mMarkAlpha = rate;
+                    } else if (value >= 4500) {
+                        mMarkAlpha = 1f;
                     }
 
                     /**
@@ -472,6 +478,13 @@ public class CommonBoostAnimView extends View {
 
                         mFireSmallCenterY = mFireSmallStartCenterY + rate * Y45DP;
                         mFireBigCenterY = mFireBigStartCenterY + rate * Y40DP;
+                    } else if (value >= 2500) {
+                        mFireSmallRadius = FIRE_RADIUS;
+                        mFireBigRadius = FIRE_RADIUS * 1.5f;
+                        mFireAlpha = 1f;
+
+                        mFireSmallCenterY = mFireSmallStartCenterY + Y45DP;
+                        mFireBigCenterY = mFireBigStartCenterY + Y40DP;
                     }
                     //更新所有的绘画需要的数据 尽量在onDraw中只存在绘制
                     prepareForDraw();
@@ -484,22 +497,6 @@ public class CommonBoostAnimView extends View {
                     //        setLayerType(View.LAYER_TYPE_NONE, null);
                     if (mUiFrameHandler != null) {
                         mUiFrameHandler.stopRefresh();
-                    }
-                    if (mMarkBitmap != null) {
-                        mMarkBitmap.recycle();
-                        mMarkBitmap = null;
-                    }
-                    if (mMaskBitmap != null) {
-                        mMaskBitmap.recycle();
-                        mMaskBitmap = null;
-                    }
-                    if (mStarRainBitmap != null) {
-                        mStarRainBitmap.recycle();
-                        mStarRainBitmap = null;
-                    }
-                    if (mRocketBitmap != null) {
-                        mRocketBitmap.recycle();
-                        mRocketBitmap = null;
                     }
                     if (mOnAnimatorAction != null) {
                         mOnAnimatorAction.onEnd();
@@ -608,6 +605,22 @@ public class CommonBoostAnimView extends View {
         }
         if (mValueAnimator != null) {
             mValueAnimator.cancel();
+        }
+        if (mMarkBitmap != null) {
+            mMarkBitmap.recycle();
+            mMarkBitmap = null;
+        }
+        if (mMaskBitmap != null) {
+            mMaskBitmap.recycle();
+            mMaskBitmap = null;
+        }
+        if (mStarRainBitmap != null) {
+            mStarRainBitmap.recycle();
+            mStarRainBitmap = null;
+        }
+        if (mRocketBitmap != null) {
+            mRocketBitmap.recycle();
+            mRocketBitmap = null;
         }
 //        setLayerType(View.LAYER_TYPE_NONE, null);
         mOnAnimatorAction = null;
