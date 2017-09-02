@@ -1,4 +1,4 @@
-package me.nieyh.example.demoproject.fragment;
+package me.nieyh.example.anim.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;

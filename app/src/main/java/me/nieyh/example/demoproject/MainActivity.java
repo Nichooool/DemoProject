@@ -1,18 +1,16 @@
 package me.nieyh.example.demoproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
 
-import me.nieyh.example.demoproject.fragment.CleanTrashFragment;
+import me.nieyihe.process.ProcessActivity;
 
 public class MainActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(android.R.id.content, new CleanTrashFragment());
-        fragmentTransaction.commit();
+        startActivity(new Intent(this, ProcessActivity.class));
     }
 }

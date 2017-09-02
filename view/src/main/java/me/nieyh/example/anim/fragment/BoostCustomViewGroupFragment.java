@@ -1,12 +1,11 @@
-package me.nieyh.example.demoproject.fragment;
+package me.nieyh.example.anim.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
 import me.nieyh.example.anim.boost.view.CommonBoostAnimLayout;
-import me.nieyh.example.demoproject.R;
-
+import me.nieyh.example.anim.view.R;
 /**
  * Created by nieyh on 17-8-22.
  */

@@ -1,6 +1,7 @@
-package me.nieyh.example.demoproject.fragment;
+package me.nieyh.example.anim.fragment;
 
-import me.nieyh.example.demoproject.R;
+
+import me.nieyh.example.anim.view.R;
 
 /**
  * Created by nieyh on 17-8-22.
