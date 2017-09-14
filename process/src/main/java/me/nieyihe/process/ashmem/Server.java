@@ -10,8 +10,7 @@ import me.nieyihe.process.IDemoInterface;
 import me.nieyihe.process.Word;
 
 /**
- * 作者：nichool on 2017/9/2 12:02
- * 邮箱：813825509@qq.com
+ * nichool on 2017/9/2 12:02
  */
 
 public class Server extends Service {

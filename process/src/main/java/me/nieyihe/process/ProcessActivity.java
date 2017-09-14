@@ -1,15 +1,15 @@
 package me.nieyihe.process;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -18,9 +18,8 @@ import android.widget.Toast;
 import java.util.List;
 
 import me.nieyihe.process.ashmem.TalkAdapter;
-import me.nieyihe.process.ashmem.Server;
 
-public class ProcessActivity extends AppCompatActivity {
+public class ProcessActivity extends Activity {
     private final String CLIENT_AUTHOR = "client";
     private final String CLIENT_WORD = "干嘛呢?";
     private IDemoInterface mRemote;

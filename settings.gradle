@@ -1,1 +1,1 @@
-include ':app', ':view', ':process', ':processclient'
+include ':app', ':view', ':process', ':processclient', ':current'
